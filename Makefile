@@ -11,8 +11,6 @@ default: repl
 ${SANDBOX}:
 	cabal sandbox init
 
-%.cabal:
-
 ${DEPS}: ${SANDBOX} $(wildcard *.cabal)
 	cabal install -j --only-dependencies --enable-tests
 	cabal configure --enable-tests ${CABAL_FLAGS}
