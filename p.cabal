@@ -1,0 +1,34 @@
+name:                  p
+version:               0.0.1
+license:               AllRightsReserved
+author:                Mark Hibberd <mark@hibberd.id.au>
+maintainer:            Mark Hibberd <mark@hibberd.id.au>
+copyright:             (c) 2015 Ambiata
+synopsis:              p
+category:              System
+cabal-version:         >= 1.8
+build-type:            Simple
+description:           p.
+
+library
+  build-depends:
+                       base                            >= 3          && < 5
+                     , text                            == 1.1.*
+
+  ghc-options:
+                       -Wall
+
+  hs-source-dirs:
+                       src
+
+
+  exposed-modules:
+                       Paths_p
+                       P
+
+test-suite test
+  type:           exitcode-stdio-1.0
+  main-is:        test.hs
+  ghc-options:    -Wall -threaded -O2
+  hs-source-dirs: test
+  build-depends:  base, QuickCheck, p
