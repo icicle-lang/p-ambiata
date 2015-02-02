@@ -34,4 +34,4 @@ test-suite test
   main-is:        test.hs
   ghc-options:    -Wall -threaded -O2
   hs-source-dirs: test
-  build-depends:  base, QuickCheck, p
+  build-depends:  base, QuickCheck, p, transformers
