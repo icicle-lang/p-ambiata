@@ -1,6 +1,6 @@
 import           Control.Monad
 
-import qualified PTest
+import qualified P.BoolTest
 
 import           System.Exit
 import           System.IO
@@ -9,5 +9,5 @@ import           System.IO
 main :: IO ()
 main =
   hSetBuffering stdout LineBuffering >> mapM id [
-      PTest.tests
+      P.BoolTest.tests
     ] >>= \rs -> when (not . all id $ rs) exitFailure
