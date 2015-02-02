@@ -27,6 +27,7 @@ library
   exposed-modules:
                        Paths_p
                        P
+                       P.Bool
 
 test-suite test
   type:           exitcode-stdio-1.0
