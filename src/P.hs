@@ -33,7 +33,6 @@ import           Data.List as X (
                    , length
                    , null
                    , splitAt
-                   , tail
                    , break
                    , filter
                    )
