@@ -15,6 +15,7 @@ description:           A set of standard preludes for Ambiata projects. \
 library
   build-depends:
                        base                            >= 3          && < 5
+                     , transformers                    == 0.4.*
 
   ghc-options:
                        -Wall
@@ -28,6 +29,7 @@ library
                        P
                        P.Applicative
                        P.Bool
+                       P.IO
                        P.Monoid
 
 test-suite test
