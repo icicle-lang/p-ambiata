@@ -46,4 +46,4 @@ import           Data.Traversable as X
 import           Data.Foldable as X
 import           GHC.Num as X
 import           Text.Show as X
-import           Text.Read as X (Read, reads)
+import           Text.Read as X (Read, reads, readMaybe, readEither)
