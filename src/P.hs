@@ -9,6 +9,7 @@ module P (
 
 import qualified Prelude
 
+import           P.Applicative as X
 import           P.Bool as X
 import           Control.Applicative as X
 import           Control.Monad as X hiding (
