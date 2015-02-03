@@ -29,6 +29,7 @@ library
                        P
                        P.Applicative
                        P.Bool
+                       P.Monoid
 
 test-suite test
   type:           exitcode-stdio-1.0
