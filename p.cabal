@@ -15,7 +15,6 @@ description:           A set of standard preludes for Ambiata projects. \
 library
   build-depends:
                        base                            >= 3          && < 5
-                     , text                            == 1.1.*
 
   ghc-options:
                        -Wall
