@@ -1,9 +1,6 @@
 module P (
     module X
-  , Prelude.toInteger
-  , Prelude.truncate
   , Prelude.seq
-
   ) where
 
 
@@ -45,5 +42,7 @@ import           Data.Tuple as X
 import           Data.Traversable as X
 import           Data.Foldable as X
 import           GHC.Num as X
+import           GHC.Real as X
+import           GHC.Float as X
 import           Text.Show as X
 import           Text.Read as X (Read, reads, readMaybe, readEither)
