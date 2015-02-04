@@ -28,6 +28,7 @@ library
                        P
                        P.Applicative
                        P.Bool
+                       P.Either
                        P.Monoid
 
 test-suite test
