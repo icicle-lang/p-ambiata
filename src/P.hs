@@ -9,6 +9,7 @@ import qualified Prelude
 import           P.Applicative as X
 import           P.Bool as X
 import           P.Either as X
+import           P.Maybe as X
 import           P.Monoid as X
 import           Control.Applicative as X
 import           Control.Monad as X hiding (
