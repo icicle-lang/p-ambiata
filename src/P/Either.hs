@@ -2,6 +2,7 @@ module P.Either (
     maybeToLeft
   , maybeToRight
   , leftToMaybe
+  , leftMap
   , rightToMaybe
   ) where
 
@@ -13,6 +14,9 @@ maybeToRight l = maybe (Left l) Right
 
 leftToMaybe :: Either l r -> Maybe l
 leftToMaybe = either Just (const Nothing)
+
+leftMap :: (l -> l') -> Either l r -> Either l' r
+leftMap f = either (Left . f) Right
 
 rightToMaybe :: Either l r -> Maybe r
 rightToMaybe = either (const Nothing) Just
