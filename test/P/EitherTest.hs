@@ -30,6 +30,15 @@ prop_leftToMaybe_right r = leftToMaybe (Left r) === Just r
 prop_leftToMaybe_left :: Int -> Property
 prop_leftToMaybe_left r = leftToMaybe (Right r) === (Nothing :: Maybe String)
 
+prop_leftMap_identity :: Either Int String -> Property
+prop_leftMap_identity e = leftMap id e === e
+
+prop_leftMap_left :: Int -> String -> Property
+prop_leftMap_left a b = leftMap (const b) (Left a) === (Left b :: Either String ())
+
+prop_leftMap_right :: Int -> String -> Property
+prop_leftMap_right a b = leftMap (const b) (Right a) === Right a
+
 prop_right :: Int -> String -> Property
 prop_right l r = maybeToRight l (rightToMaybe $ Right r) === Right r
 
