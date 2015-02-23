@@ -1,5 +1,6 @@
 module P (
     module X
+  , Prelude.otherwise
   , Prelude.seq
   ) where
 
