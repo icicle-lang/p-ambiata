@@ -15,6 +15,7 @@ description:           A set of standard preludes for Ambiata projects. \
 library
   build-depends:
                        base                            >= 4.6        && < 5
+                     , semigroups                      == 0.16.*
 
   ghc-options:
                        -Wall
@@ -32,6 +33,7 @@ library
                        P.Maybe
                        P.Monoid
                        P.Ord
+                       P.List
 
 test-suite test
   type:           exitcode-stdio-1.0
