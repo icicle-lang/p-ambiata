@@ -35,10 +35,15 @@ library
                        P.Ord
                        P.List
                        P.Function
+                       P.Foldable
 
 test-suite test
   type:           exitcode-stdio-1.0
   main-is:        test.hs
   ghc-options:    -Wall -threaded -O2
   hs-source-dirs: test
-  build-depends:  base, QuickCheck, p, transformers
+  build-depends:       base
+                     , mtl                             == 2.2.*
+                     , QuickCheck
+                     , p
+                     , transformers
