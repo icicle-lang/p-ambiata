@@ -34,6 +34,7 @@ library
                        P.Monoid
                        P.Ord
                        P.List
+                       P.Function
 
 test-suite test
   type:           exitcode-stdio-1.0

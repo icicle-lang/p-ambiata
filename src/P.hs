@@ -13,6 +13,7 @@ import           P.Maybe as X
 import           P.Monoid as X
 import           P.Ord as X
 import           P.List as X
+import           P.Function as X
 import           Control.Applicative as X
 import           Control.Monad as X hiding (
                      mapM

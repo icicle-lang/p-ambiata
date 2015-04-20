@@ -7,6 +7,7 @@ import qualified P.MaybeTest
 import qualified P.MonoidTest
 import qualified P.OrdTest
 import qualified P.ListTest
+import qualified P.FunctionTest
 
 import           System.Exit
 import           System.IO
@@ -22,4 +23,5 @@ main =
     , P.MonoidTest.tests
     , P.OrdTest.tests
     , P.ListTest.tests
+    , P.FunctionTest.tests
     ] >>= \rs -> when (not . all id $ rs) exitFailure
