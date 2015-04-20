@@ -3,6 +3,7 @@ import           Control.Monad
 import qualified P.ApplicativeTest
 import qualified P.BoolTest
 import qualified P.EitherTest
+import qualified P.FoldableTest
 import qualified P.MaybeTest
 import qualified P.MonoidTest
 import qualified P.OrdTest
@@ -19,6 +20,7 @@ main =
       P.ApplicativeTest.tests
     , P.BoolTest.tests
     , P.EitherTest.tests
+    , P.FoldableTest.tests
     , P.MaybeTest.tests
     , P.MonoidTest.tests
     , P.OrdTest.tests
