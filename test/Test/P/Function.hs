@@ -1,5 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
-module P.FunctionTest where
+module Test.P.Function where
 
 import           P.Function
 

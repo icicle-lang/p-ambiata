@@ -1,5 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
-module P.BoolTest where
+module Test.P.Bool where
 
 import           Control.Monad.Trans.Writer
 

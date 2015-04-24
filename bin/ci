@@ -3,13 +3,9 @@
 export LC_COLLATE=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-if find $HOME/.cabal/packages/hackage.haskell.org/00-index.cache -type f -mtime +1 | grep -q 00-index; then
-    cabal update
-fi
-
-make .cabal-sandbox/.cairn
-cabal configure --enable-tests
-cabal test --log=/dev/stdout
+./cabal update
+./cabal build
+./cabal test --log=/dev/stdout
 
 VERSION=$(date '+%Y%m%d%H%M%S')-$(git log --pretty=format:%h -n 1)
 

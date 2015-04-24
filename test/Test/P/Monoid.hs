@@ -1,5 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
-module P.MonoidTest where
+module Test.P.Monoid where
 
 import           P.Monoid
 

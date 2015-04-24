@@ -1,5 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
-module P.EitherTest where
+module Test.P.Either where
 
 import           P.Either
 
