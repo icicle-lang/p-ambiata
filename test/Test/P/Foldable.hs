@@ -1,5 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
-module P.FoldableTest where
+module Test.P.Foldable where
 
 import           Control.Monad.State
 

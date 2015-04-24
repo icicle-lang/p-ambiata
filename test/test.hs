@@ -1,14 +1,14 @@
 import           Control.Monad
 
-import qualified P.ApplicativeTest
-import qualified P.BoolTest
-import qualified P.EitherTest
-import qualified P.FoldableTest
-import qualified P.MaybeTest
-import qualified P.MonoidTest
-import qualified P.OrdTest
-import qualified P.ListTest
-import qualified P.FunctionTest
+import qualified Test.P.Applicative
+import qualified Test.P.Bool
+import qualified Test.P.Either
+import qualified Test.P.Foldable
+import qualified Test.P.Maybe
+import qualified Test.P.Monoid
+import qualified Test.P.Ord
+import qualified Test.P.List
+import qualified Test.P.Function
 
 import           System.Exit
 import           System.IO
@@ -17,13 +17,13 @@ import           System.IO
 main :: IO ()
 main =
   hSetBuffering stdout LineBuffering >> mapM id [
-      P.ApplicativeTest.tests
-    , P.BoolTest.tests
-    , P.EitherTest.tests
-    , P.FoldableTest.tests
-    , P.MaybeTest.tests
-    , P.MonoidTest.tests
-    , P.OrdTest.tests
-    , P.ListTest.tests
-    , P.FunctionTest.tests
+      Test.P.Applicative.tests
+    , Test.P.Bool.tests
+    , Test.P.Either.tests
+    , Test.P.Foldable.tests
+    , Test.P.Maybe.tests
+    , Test.P.Monoid.tests
+    , Test.P.Ord.tests
+    , Test.P.List.tests
+    , Test.P.Function.tests
     ] >>= \rs -> when (not . all id $ rs) exitFailure

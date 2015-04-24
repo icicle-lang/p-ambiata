@@ -1,5 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
-module P.ListTest where
+module Test.P.List where
 
 import           P.List
 

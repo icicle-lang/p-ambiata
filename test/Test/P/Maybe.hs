@@ -1,5 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
-module P.MaybeTest where
+module Test.P.Maybe where
 
 import           P.Maybe
 

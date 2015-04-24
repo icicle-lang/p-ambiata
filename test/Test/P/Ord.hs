@@ -1,5 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
-module P.OrdTest where
+module Test.P.Ord where
 
 import           P.Ord
 

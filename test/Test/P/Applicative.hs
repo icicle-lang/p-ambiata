@@ -1,5 +1,5 @@
 {-# LANGUAGE TemplateHaskell #-}
-module P.ApplicativeTest where
+module Test.P.Applicative where
 
 import           P.Applicative
 
