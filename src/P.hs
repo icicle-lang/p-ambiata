@@ -38,6 +38,7 @@ import           Data.List as X (
                    , splitAt
                    , break
                    , filter
+                   , reverse
                    )
 import           Data.Maybe as X hiding (fromJust)
 import           Data.Monoid as X
