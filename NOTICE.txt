@@ -1,5 +1,5 @@
 ====
-    Copyright 2013,2014 Ambiata Pty Ltd
+    Copyright 2015 Ambiata Pty Ltd
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
     limitations under the License.
 ====
 
-(c) Copyright Ambiata Pty Ltd, 2013,2014
+(c) Copyright Ambiata Pty Ltd, 2015
 
 Some files contain other unattributed Contributions to the Work; All Contributions
 received from Contributors under the terms of the Apache License Agreement v 2.0 and
