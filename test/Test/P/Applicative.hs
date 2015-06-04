@@ -4,8 +4,6 @@ module Test.P.Applicative where
 import           P.Applicative
 import           Data.Monoid
 import           Test.QuickCheck
-import           Control.Applicative
-
 
 prop_valueOrEmpty_true :: Int -> Property
 prop_valueOrEmpty_true a = valueOrEmpty True a === Just a
