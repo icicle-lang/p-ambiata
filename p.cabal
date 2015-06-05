@@ -14,8 +14,9 @@ description:           A set of standard preludes for Ambiata projects. \
 
 library
   build-depends:
-                       base                            >= 4.6        && < 5
-                     , semigroups                      == 0.16.*
+                         base                        >= 4.6        && < 5
+                         , either                    >= 4.3        && < 4.5
+                       , semigroups                  == 0.16.*
 
   ghc-options:
                        -Wall
@@ -30,6 +31,7 @@ library
                        P.Applicative
                        P.Bool
                        P.Either
+                       P.EitherT
                        P.Maybe
                        P.Monoid
                        P.Ord
@@ -43,7 +45,8 @@ test-suite test
   ghc-options:    -Wall -threaded -O2
   hs-source-dirs: test
   build-depends:       base
-                     , mtl                             == 2.2.*
+                     , either                        >= 4.3        && < 4.5
+                     , mtl                           == 2.2.*
                      , QuickCheck
                      , p
                      , transformers
