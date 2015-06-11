@@ -26,6 +26,8 @@ import           Control.Monad as X hiding (
                    , forM_
                    , msum
                    )
+import           Control.Monad.Trans.Class as X (MonadTrans(..))
+import           Control.Monad.IO.Class as X (MonadIO(..))
 import           Data.Eq as X
 import           Data.Bool as X
 import           Data.Char as X (Char)
