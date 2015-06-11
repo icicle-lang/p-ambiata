@@ -15,6 +15,7 @@ description:           A set of standard preludes for Ambiata projects. \
 library
   build-depends:
                           base                        >= 4.6        && < 5
+                        , bifunctors                  >= 4.2        && <= 5
                         , either                      >= 4.3        && < 4.5
                         , semigroups                  == 0.16.*
                         , transformers                >= 0.3        && < 0.5
