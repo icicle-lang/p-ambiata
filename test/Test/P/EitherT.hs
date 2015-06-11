@@ -33,6 +33,14 @@ prop_secondEitherT_map fun n =
       r = right n :: EitherT String Identity Int
   in  secondEitherT f r === right (f n)
 
+prop_eitherTFromMaybeRight :: Int -> Property
+prop_eitherTFromMaybeRight t =
+  runIdentity (runEitherT $ eitherTFromMaybe () (Identity $ Just t)) === Right t
+
+prop_eitherTFromMaybeLeft :: Int -> Property
+prop_eitherTFromMaybeLeft t =
+  runIdentity (runEitherT $ eitherTFromMaybe t (Identity (Nothing :: Maybe ()))) === Left t
+
 
 return []
 tests :: IO Bool
