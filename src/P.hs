@@ -9,7 +9,6 @@ import qualified Prelude
 import           P.Applicative as X
 import           P.Bool as X
 import           P.Either as X
-import           P.EitherT as X
 import           P.Foldable as X
 import           P.Maybe as X
 import           P.Monoid as X
@@ -26,8 +25,6 @@ import           Control.Monad as X hiding (
                    , forM_
                    , msum
                    )
-import           Control.Monad.Trans.Class as X (MonadTrans(..))
-import           Control.Monad.IO.Class as X (MonadIO(..))
 import           Data.Eq as X
 import           Data.Bifunctor as X (Bifunctor(..))
 import           Data.Bool as X
