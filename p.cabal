@@ -16,9 +16,7 @@ library
   build-depends:
                           base                        >= 4.6        && < 5
                         , bifunctors                  >= 4.2        && <= 5
-                        , either                      >= 4.3        && < 4.5
                         , semigroups                  == 0.16.*
-                        , transformers                >= 0.3        && < 0.5
 
   ghc-options:
                        -Wall
@@ -28,12 +26,10 @@ library
 
 
   exposed-modules:
-                       Paths_p
                        P
                        P.Applicative
                        P.Bool
                        P.Either
-                       P.EitherT
                        P.Maybe
                        P.Monoid
                        P.Ord
