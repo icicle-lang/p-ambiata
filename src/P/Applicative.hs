@@ -1,7 +1,9 @@
 module P.Applicative (
-    valueOrEmpty
+    ApplicativeMonoid (..)
+  , valueOrEmpty
   , emptyOrValue
   , orEmpty
+  , (<<>>)
   ) where
 
 import           Control.Applicative
@@ -16,3 +18,16 @@ emptyOrValue = valueOrEmpty . not
 
 orEmpty :: (Alternative f, Monoid a) => f a -> f a
 orEmpty f = f <|> pure mempty
+
+-- | Applicative mappend
+(<<>>) :: (Monoid a, Applicative f) => f a -> f a -> f a
+(<<>>) = liftA2 mappend
+
+-- | wrapper for monoids in an applicative context
+newtype ApplicativeMonoid m a =
+  ApplicativeMonoid { unApplicativeMonoid :: m a }
+  deriving (Show, Eq)
+
+instance (Monoid a, Applicative m) => Monoid (ApplicativeMonoid m a) where
+  mempty = ApplicativeMonoid (pure mempty)
+  mappend (ApplicativeMonoid a) (ApplicativeMonoid b) = ApplicativeMonoid (a <<>> b)
