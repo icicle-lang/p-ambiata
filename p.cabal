@@ -36,6 +36,7 @@ library
                        P.List
                        P.Function
                        P.Foldable
+                       P.Debug
 
 test-suite test
   type:           exitcode-stdio-1.0
