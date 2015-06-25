@@ -6,6 +6,7 @@ import           P.List
 import qualified Data.List as L
 
 import           Test.QuickCheck
+import           Test.QuickCheck.Function
 
 prop_nub :: (Ord a, Eq a, Show a) => [a] -> Property
 prop_nub a =
@@ -18,6 +19,10 @@ prop_lastMaybe a l =
 prop_lastMaybe_empty :: Property
 prop_lastMaybe_empty =
   lastMaybe [] === (Nothing :: Maybe ())
+
+prop_count :: [Int] -> Fun Int Bool -> Property
+prop_count list (Fun _ predicate) =
+  count predicate list === length (filter predicate list)
 
 return []
 tests :: IO Bool

@@ -1,6 +1,7 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 module P.List (
-    ordNub
+    count
+  , ordNub
   , lastMaybe
   ) where
 
@@ -11,6 +12,8 @@ import Data.Functor (fmap)
 import Data.List hiding (head, group)
 import Data.List.NonEmpty (head, group)
 import Data.Maybe (Maybe, listToMaybe)
+import Data.Bool
+import Data.Int
 
 -- |
 -- Like `nub` from Prelude, but adds an `Ord` constraint to boost efficiency a little bit,
@@ -21,3 +24,7 @@ ordNub = fmap head . group . sort
 
 lastMaybe :: [a] -> Maybe a
 lastMaybe = listToMaybe . reverse
+
+-- | count the number of elements satisfying a predicate in a list
+count :: (a -> Bool) -> [a] -> Int
+count predicate = length . filter predicate
