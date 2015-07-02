@@ -49,7 +49,7 @@ import           Data.Int as X
 import           Data.Ord as X
 import           Data.Tuple as X
 import           Data.Traversable as X
-import           Data.Foldable as X
+import           Data.Foldable as X hiding (foldr1, foldl1, maximum, maximumBy, minimum, minimumBy)
 import           GHC.Num as X
 import           GHC.Real as X
 import           GHC.Float as X
