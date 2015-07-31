@@ -1,4 +1,4 @@
-name:                  p
+name:                  ambiata-p
 version:               0.0.1
 license:               AllRightsReserved
 author:                Ambiata <info@ambiata.com>
@@ -48,5 +48,5 @@ test-suite test
                      , mtl                           == 2.2.*
                      , QuickCheck
                      , quickcheck-properties
-                     , p
+                     , ambiata-p
                      , transformers
