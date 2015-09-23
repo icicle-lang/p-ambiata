@@ -1,8 +1,0 @@
-#!/bin/sh -exu
-
-export LC_COLLATE=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-./mafia update
-./mafia build
-./mafia testci -- --log=/dev/null
