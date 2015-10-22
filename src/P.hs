@@ -1,10 +1,14 @@
 module P (
     module X
-  , Prelude.seq
   ) where
 
-
-import qualified Prelude
+import           Prelude as X (
+                     Enum
+                   , Bounded
+                   , minBound
+                   , maxBound
+                   , seq
+                   )
 
 import           P.Applicative as X
 import           P.Bool as X
