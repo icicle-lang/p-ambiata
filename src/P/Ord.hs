@@ -3,7 +3,7 @@ module P.Ord (
   , sortOn
   ) where
 
-import         Data.List
+import         Data.List (sortBy)
 import         Data.Ord (comparing)
 
 maxOn :: (Ord o) => (a -> o) -> a -> a -> a

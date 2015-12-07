@@ -5,9 +5,9 @@ module P.Monoid (
   ) where
 
 import           Control.Applicative
-
 import           Data.Monoid
 
+import           Prelude
 
 valueOrZero :: Monoid a => Bool -> a -> a
 valueOrZero b a =

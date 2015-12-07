@@ -8,7 +8,7 @@ module P.Applicative (
 
 import           Control.Applicative
 import           Data.Monoid
-
+import           Prelude
 
 valueOrEmpty :: Alternative f => Bool -> a -> f a
 valueOrEmpty b a = if b then pure a else empty
