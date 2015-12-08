@@ -1,3 +1,5 @@
+{-# LANGUAGE CPP #-}
+
 module P (
     module X
   ) where
@@ -39,12 +41,14 @@ import           Data.List as X (
                      intercalate
                    , isPrefixOf
                    , drop
-                   , length
-                   , null
                    , splitAt
                    , break
                    , filter
                    , reverse
+#if (__GLASGOW_HASKELL__ < 710)
+                   , length
+                   , null
+#endif
                    )
 import           Data.Maybe as X hiding (fromJust)
 import           Data.Monoid as X
@@ -53,7 +57,14 @@ import           Data.Int as X
 import           Data.Ord as X
 import           Data.Tuple as X
 import           Data.Traversable as X
-import           Data.Foldable as X hiding (foldr1, foldl1, maximum, maximumBy, minimum, minimumBy)
+import           Data.Foldable as X hiding (
+                     foldr1
+                   , foldl1
+                   , maximum
+                   , maximumBy
+                   , minimum
+                   , minimumBy
+                   )
 import           GHC.Num as X
 import           GHC.Real as X
 import           GHC.Float as X

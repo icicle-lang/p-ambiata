@@ -3,8 +3,8 @@
 module Test.P.Ord where
 
 import           P.Ord
-import           Data.List
-import           Data.Ord
+import           Data.List (sortBy)
+import           Data.Ord (comparing)
 
 import           Test.QuickCheck
 
