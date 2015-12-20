@@ -1,15 +1,27 @@
-{-# LANGUAGE TemplateHaskell #-}
-{-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE DeriveFunctor #-}
 {-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE TemplateHaskell #-}
 {-# OPTIONS_GHC -fno-warn-missing-signatures #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Test.P.Applicative where
 
+import           Control.Applicative ((<$>), pure)
+
+import           Data.Bool (Bool(..))
+import           Data.Function (($))
+import           Data.Functor.Identity (Identity(..))
+import           Data.Int (Int)
+import           Data.Maybe (Maybe(..))
+import           Data.Monoid (Sum(..))
+
 import           P.Applicative
-import           Control.Applicative
-import           Data.Monoid
-import           Data.Functor.Identity
+
+import           Prelude (Eq(..))
+
+import           System.IO (IO)
+
 import           Test.QuickCheck
 import           Test.QuickCheck.Property.Monoid (prop_Monoid, T(..))
 import           Test.QuickCheck.Property.Common (eq)
@@ -41,6 +53,6 @@ instance Arbitrary (m a) => Arbitrary (ApplicativeMonoid m a) where
 instance Arbitrary a => Arbitrary (Sum a) where
   arbitrary = Sum <$> arbitrary
 
-return []
+pure []
 tests :: IO Bool
 tests = $quickCheckAll
