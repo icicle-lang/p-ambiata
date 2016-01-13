@@ -36,7 +36,6 @@ import           Data.Eq as X
 import           Data.Bifunctor as X (Bifunctor(..))
 import           Data.Bool as X
 import           Data.Char as X (Char)
-import           Data.Function as X
 import           Data.List as X (
                      intercalate
                    , isPrefixOf
