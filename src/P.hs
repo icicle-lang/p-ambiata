@@ -14,6 +14,7 @@ import           Prelude as X (
                    )
 
 import           P.Applicative as X
+import           P.Monad as X
 import           P.Bool as X
 import           P.Either as X
 import           P.Foldable as X
@@ -23,21 +24,24 @@ import           P.Ord as X
 import           P.List as X
 import           P.Function as X
 import           P.Debug as X
-import           Control.Applicative as X
+import           Control.Applicative as X (
+                     Applicative(..)
+                   , Alternative(..)
+                   , Const(..)
+                   , WrappedMonad(..)
+                   , WrappedArrow(..)
+                   , ZipList(..)
+                   , (<**>)
+                   , liftA
+                   , liftA2
+                   , liftA3
+                   , optional
+                   )
 import           Control.DeepSeq as X (
                      NFData(..)
                    , ($!!)
                    , deepseq
                    , force
-                   )
-import           Control.Monad as X hiding (
-                     mapM
-                   , sequence
-                   , forM
-                   , mapM_
-                   , sequence_
-                   , forM_
-                   , msum
                    )
 import           Data.Eq as X
 import           Data.Bifunctor as X (Bifunctor(..))
@@ -59,6 +63,12 @@ import           Data.List as X (
 import           Data.Maybe as X hiding (fromJust)
 import           Data.Monoid as X
 import           Data.Either as X
+import           Data.Functor as X (
+                     Functor(..)
+                   , ($>)
+                   , (<$>)
+                   , void
+                   )
 import           Data.Int as X
 import           Data.Ord as X
 import           Data.Tuple as X

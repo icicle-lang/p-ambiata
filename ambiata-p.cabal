@@ -32,6 +32,7 @@ library
                        P.Bool
                        P.Either
                        P.Maybe
+                       P.Monad
                        P.Monoid
                        P.Ord
                        P.List
