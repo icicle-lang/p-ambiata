@@ -24,6 +24,12 @@ import           P.List as X
 import           P.Function as X
 import           P.Debug as X
 import           Control.Applicative as X
+import           Control.DeepSeq as X (
+                     NFData(..)
+                   , ($!!)
+                   , deepseq
+                   , force
+                   )
 import           Control.Monad as X hiding (
                      mapM
                    , sequence
