@@ -16,7 +16,7 @@ library
   build-depends:
                           base                        >= 4.6        && < 5
                         , bifunctors                  >= 4.2        && <= 5
-                        , semigroups                  == 0.16.*
+                        , semigroups                  >= 0.16       && < 0.19
 
   ghc-options:
                        -Wall
@@ -44,9 +44,8 @@ test-suite test
   ghc-options:    -Wall -threaded -O2
   hs-source-dirs: test
   build-depends:       base
-                     , either                        >= 4.3        && < 4.5
                      , mtl                           == 2.2.*
-                     , QuickCheck
+                     , QuickCheck                    >= 2.8.2      && < 2.9
                      , quickcheck-properties
                      , ambiata-p
                      , transformers
