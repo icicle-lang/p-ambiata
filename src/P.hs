@@ -9,6 +9,7 @@ import           Prelude as X (
                    , Bounded
                    , minBound
                    , maxBound
+                   , ($!)
                    , seq
                    )
 
