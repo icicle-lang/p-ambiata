@@ -2,6 +2,7 @@ import           Control.Monad
 
 import qualified Test.P.Applicative
 import qualified Test.P.Bool
+import qualified Test.P.Bifunctor.Trans
 import qualified Test.P.Either
 import qualified Test.P.Foldable
 import qualified Test.P.Maybe
@@ -18,6 +19,7 @@ main :: IO ()
 main =
   hSetBuffering stdout LineBuffering >> mapM id [
       Test.P.Applicative.tests
+    , Test.P.Bifunctor.Trans.tests
     , Test.P.Bool.tests
     , Test.P.Either.tests
     , Test.P.Foldable.tests

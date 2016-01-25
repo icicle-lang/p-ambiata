@@ -1,0 +1,14 @@
+name:                  ambiata-p-test
+version:               0.0.1
+cabal-version:         >= 1.8
+build-type:            Simple
+
+library
+  build-depends:         base
+                       , ambiata-p
+                       , QuickCheck                    >= 2.8.2      && < 2.9
+                       , quickcheck-properties
+                       , transformers                  >= 0.3        && < 0.6
+
+  exposed-modules:
+                       Test.P.Bifunctor.Trans.Laws

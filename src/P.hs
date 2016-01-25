@@ -14,11 +14,12 @@ import           Prelude as X (
                    )
 
 import           P.Applicative as X
-import           P.Monad as X
+import           P.Bifunctor.Trans as X
 import           P.Bool as X
 import           P.Either as X
 import           P.Foldable as X
 import           P.Maybe as X
+import           P.Monad as X
 import           P.Monoid as X
 import           P.Ord as X
 import           P.List as X
