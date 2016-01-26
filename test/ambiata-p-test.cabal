@@ -6,7 +6,7 @@ build-type:            Simple
 library
   build-depends:         base
                        , ambiata-p
-                       , QuickCheck                    >= 2.8.2      && < 2.9
+                       , QuickCheck                    >= 2.7        && < 2.9
                        , quickcheck-properties
                        , transformers                  >= 0.3        && < 0.6
 
