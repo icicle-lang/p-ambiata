@@ -62,7 +62,6 @@ import           Data.List as X (
 #endif
                    )
 import           Data.Maybe as X hiding (fromJust)
-import           Data.Monoid as X
 import           Data.Either as X
 import           Data.Functor as X (
                      Functor(..)
