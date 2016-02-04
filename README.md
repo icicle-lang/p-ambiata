@@ -1,5 +1,6 @@
 p
 =
+[![Build Status](https://api.travis-ci.org/ambiata/p.svg?branch=master)](https://travis-ci.org/ambiata/p)
 
 ```
 The Ambiata Prelude. Short and sweet.
