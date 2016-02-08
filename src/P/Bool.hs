@@ -3,6 +3,7 @@ module P.Bool (
     whenM
   , unlessM
   , ifM
+  , guardM
 #if __GLASGOW_HASKELL__ >= 708
   , Data.Bool.bool
 #else
@@ -10,7 +11,7 @@ module P.Bool (
 #endif
   ) where
 
-import           Control.Monad (when, unless)
+import           Control.Monad (MonadPlus, when, unless, guard)
 
 #if __GLASGOW_HASKELL__ >= 708
 import qualified Data.Bool
@@ -30,3 +31,6 @@ unlessM p m =
 ifM :: Monad m => m Bool -> m a -> m a -> m a
 ifM p x y =
   p >>= \b -> if b then x else y
+
+guardM :: MonadPlus m => m Bool -> m ()
+guardM f = guard =<< f
