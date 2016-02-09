@@ -3,6 +3,7 @@ module P.Applicative (
   , valueOrEmpty
   , emptyOrValue
   , orEmpty
+  , eitherA
   , (<<>>)
   ) where
 
@@ -18,6 +19,10 @@ emptyOrValue = valueOrEmpty . not
 
 orEmpty :: (Alternative f, Monoid a) => f a -> f a
 orEmpty f = f <|> pure mempty
+
+-- | Combine two alternatives.
+eitherA :: (Alternative f) => f a -> f b -> f (Either a b)
+eitherA a b = (Left <$> a) <|> (Right <$> b)
 
 -- | Applicative mappend
 (<<>>) :: (Monoid a, Applicative f) => f a -> f a -> f a
