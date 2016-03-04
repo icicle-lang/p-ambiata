@@ -39,6 +39,7 @@ module P.Monad (
 
   -- * Strict monadic functions
   , (<$!>)
+  , liftM'
   , liftM2'
   ) where
 
@@ -68,6 +69,9 @@ f <$!> m = do
 {-# INLINE (<$!>) #-}
 
 #endif
+
+liftM' :: Monad m => (a -> b) -> m a -> m b
+liftM' = (<$!>)
 
 -- | Strict version of 'Control.Monad.liftM2'.
 liftM2' :: (Monad m) => (a -> b -> c) -> m a -> m b -> m c
