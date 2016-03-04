@@ -39,6 +39,8 @@ module P.Monad (
 
   -- * Strict monadic functions
   , (<$!>)
+  , liftM'
+  , liftM2'
   ) where
 
 import           Control.Monad (Monad(..), MonadPlus(..))
@@ -48,13 +50,13 @@ import           Control.Monad (foldM, foldM_, replicateM, replicateM_)
 import           Control.Monad (guard, when, unless)
 import           Control.Monad (liftM, liftM2, liftM3, liftM4, liftM5, ap)
 
+import           Prelude (seq)
+
 #if (__GLASGOW_HASKELL__ >= 710)
 
 import           Control.Monad ((<$!>))
 
 #else
-
-import           Prelude (seq)
 
 infixl 4 <$!>
 
@@ -67,3 +69,15 @@ f <$!> m = do
 {-# INLINE (<$!>) #-}
 
 #endif
+
+liftM' :: Monad m => (a -> b) -> m a -> m b
+liftM' = (<$!>)
+
+-- | Strict version of 'Control.Monad.liftM2'.
+liftM2' :: (Monad m) => (a -> b -> c) -> m a -> m b -> m c
+liftM2' f a b = do
+  x <- a
+  y <- b
+  let z = f x y
+  z `seq` return z
+{-# INLINE liftM2' #-}
