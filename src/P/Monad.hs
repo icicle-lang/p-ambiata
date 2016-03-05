@@ -10,10 +10,10 @@ module P.Monad (
   , (=<<)
   , (>=>)
   , (<=<)
+  , join
   , forever
 
   -- ** Generalisations of list functions
-  , join
   , mfilter
   , filterM
   , mapAndUnzipM
@@ -39,6 +39,9 @@ module P.Monad (
 
   -- * Strict monadic functions
   , (<$!>)
+
+  -- * Extensions
+  , bind
   , liftM'
   , liftM2'
   ) where
@@ -70,11 +73,18 @@ f <$!> m = do
 
 #endif
 
+-- | Identifier version of 'Control.Monad.=<<'.
+bind :: Monad m => (a -> m b) -> m a -> m b
+bind = (=<<)
+{-# INLINE bind #-}
+
+-- | Strict version of 'Control.Monad.liftM'.
 liftM' :: Monad m => (a -> b) -> m a -> m b
 liftM' = (<$!>)
+{-# INLINE liftM' #-}
 
 -- | Strict version of 'Control.Monad.liftM2'.
-liftM2' :: (Monad m) => (a -> b -> c) -> m a -> m b -> m c
+liftM2' :: Monad m => (a -> b -> c) -> m a -> m b -> m c
 liftM2' f a b = do
   x <- a
   y <- b
