@@ -25,6 +25,7 @@ import           P.Ord as X
 import           P.List as X
 import           P.Function as X
 import           P.Debug as X
+import           P.Show as X
 import           Control.Applicative as X (
                      Applicative(..)
                    , Alternative(..)
