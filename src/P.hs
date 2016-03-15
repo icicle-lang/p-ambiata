@@ -74,6 +74,7 @@ import           Data.Int as X
 import           Data.Ord as X
 import           Data.Tuple as X
 import           Data.Traversable as X
+import           Data.Text as X (Text)
 import           Data.Foldable as X hiding (
                      foldr1
                    , foldl1
