@@ -25,6 +25,7 @@ import           P.Ord as X
 import           P.List as X
 import           P.Function as X
 import           P.Debug as X
+import           P.Show as X
 import           Control.Applicative as X (
                      Applicative(..)
                    , Alternative(..)
@@ -73,6 +74,7 @@ import           Data.Int as X
 import           Data.Ord as X
 import           Data.Tuple as X
 import           Data.Traversable as X
+import           Data.Text as X (Text)
 import           Data.Foldable as X hiding (
                      foldr1
                    , foldl1
