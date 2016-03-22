@@ -1,0 +1,14 @@
+[boris]
+  version = 1
+
+[build.dist]
+  pre = [["echo", "starting..."]]
+  post = [["echo", "finishing..."]]
+  success = [["echo", "we won..."]]
+  failure = [["echo", "we lost..."]]
+
+[build.branches]
+  pre = [["echo", "starting..."]]
+  post = [["echo", "finishing..."]]
+  success = [["echo", "we won..."]]
+  failure = [["echo", "we lost..."]]
