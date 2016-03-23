@@ -1,6 +1,4 @@
-#!/bin/sh -eux
-
-env
+#!/bin/sh -eu
 
 fetch_latest () {
   if [ -z ${MAFIA_TEST_MODE+x} ]; then
