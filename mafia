@@ -63,7 +63,7 @@ exec_mafia () {
       # Create a temporary directory which will be deleted when the script
       # terminates. Unfortunately `mktemp` doesn't behave the same on
       # Linux and OS/X so we need to try two different approaches.
-      MAFIA_TEMP=$(mktemp -d || mktemp -d -t 'exec_mafia')
+      MAFIA_TEMP=$(mktemp -d 2>/dev/null || mktemp -d -t 'exec_mafia')
 
       # Create a temporary file in MAFIA_BIN so we can do an atomic copy/move dance.
       mkdir -p $MAFIA_BIN
