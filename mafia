@@ -69,6 +69,7 @@ exec_mafia () {
 
       # Create a temporary file in MAFIA_BIN so we can do an atomic copy/move dance.
       mkdir -p $MAFIA_BIN
+      mktemp --tmpdir=$MAFIA_BIN $MAFIA_FILE-XXXXXX
       MAFIA_PATH_TEMP=$(mktemp --tmpdir=$MAFIA_BIN $MAFIA_FILE-XXXXXX 2>/dev/null || TMPDIR=$MAFIA_BIN mktemp -t $MAFIA_FILE)
 
       clean_up () {
