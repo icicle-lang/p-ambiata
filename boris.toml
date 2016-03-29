@@ -2,13 +2,13 @@
   version = 1
 
 [build.dist]
-  pre = [["echo", "starting..."]]
-  post = [["echo", "finishing..."]]
-  success = [["echo", "we won..."]]
-  failure = [["echo", "we lost..."]]
+  pre = [["tsar", "pre"]]
+  post = []
+  success = [["tsar", "success"]]
+  failure = [["tsar", "failure"]]
 
 [build.branches]
-  pre = [["echo", "starting..."]]
-  post = [["echo", "finishing..."]]
-  success = [["echo", "we won..."]]
-  failure = [["echo", "we lost..."]]
+  pre = [["tsar", "pre"]]
+  post = []
+  success = [["tsar", "success"]]
+  failure = [["tsar", "failure"]]
