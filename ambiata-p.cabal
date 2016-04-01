@@ -27,7 +27,6 @@ library
   hs-source-dirs:
                        src
 
-
   exposed-modules:
                        P
                        P.Applicative

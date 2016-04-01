@@ -1,4 +1,4 @@
-#!/bin/sh -eux
+#!/bin/sh -eu
 
 fetch_latest () {
   if [ -z ${MAFIA_TEST_MODE+x} ]; then
@@ -67,7 +67,6 @@ exec_mafia () {
 
       # Create a temporary file in MAFIA_BIN so we can do an atomic copy/move dance.
       mkdir -p $MAFIA_BIN
-      mktemp --tmpdir=$MAFIA_BIN $MAFIA_FILE-XXXXXX
       MAFIA_PATH_TEMP=$(mktemp --tmpdir=$MAFIA_BIN $MAFIA_FILE-XXXXXX 2>/dev/null || TMPDIR=$MAFIA_BIN mktemp -t $MAFIA_FILE)
 
       clean_up () {
@@ -111,4 +110,4 @@ case "$MODE" in
 upgrade) shift; run_upgrade "$@" ;;
 *) exec_mafia "$@"
 esac
-# Version: 0bc025ecbfc94195ed568272caae698aabee1f62
+# Version: d167d3d3dd99b4da6338ab03b29c998e5349efb6
