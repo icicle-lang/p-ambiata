@@ -88,7 +88,7 @@ exec_mafia () {
       MAFIA_PATH_TEMP=$(mktemp --tmpdir=$MAFIA_BIN $MAFIA_FILE-XXXXXX 2>/dev/null || TMPDIR=$MAFIA_BIN mktemp -t $MAFIA_FILE)
 
       clean_up_temp () {
-        clean_up()
+        clean_up
         rm -rf "$MAFIA_PATH_TEMP"
       }
       trap clean_up_temp EXIT
