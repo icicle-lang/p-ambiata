@@ -89,13 +89,15 @@ exec_mafia () {
 
       clean_up_temp () {
         clean_up
-        rm -rf "$MAFIA_PATH_TEMP"
+        rm -f "$MAFIA_PATH_TEMP"
       }
       trap clean_up_temp EXIT
 
       cp "$MAFIA_TEMP/mafia/.cabal-sandbox/bin/mafia" "$MAFIA_PATH_TEMP"
       chmod 755 "$MAFIA_PATH_TEMP"
       mv "$MAFIA_PATH_TEMP" "$MAFIA_PATH"
+
+      clean_up_temp
     }
 
     exec $MAFIA_PATH "$@"
@@ -116,4 +118,4 @@ case "$MODE" in
 upgrade) shift; run_upgrade "$@" ;;
 *) exec_mafia "$@"
 esac
-# Version: d167d3d3dd99b4da6338ab03b29c998e5349efb6
+# Version: 0c5576267dc02c616b0ffd4c208c526b67fa02a8
