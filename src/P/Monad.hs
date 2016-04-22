@@ -40,6 +40,7 @@ module P.Monad (
   -- * Strict monadic functions
   , (<$!>)
   , (>>=!!)
+  , (>>=!)
 
   -- * Extensions
   , bind
@@ -81,6 +82,11 @@ infixl 1 >>=!!
 (>>=!!) :: (NFData a, Monad m) => m a -> (a -> m b) -> m b
 (>>=!!) m f = m >>= f . force
 {-# INLINE (>>=!!) #-}
+
+-- | Seq version 'Control.Monad.>>='
+(>>=!) :: (Monad m) => m a -> (a -> m b) -> m b
+(>>=!) m f = m >>= f . (\x -> x `seq` x)
+{-# INLINE (>>=!) #-}
 
 -- | Identifier version of 'Control.Monad.=<<'.
 bind :: Monad m => (a -> m b) -> m a -> m b
