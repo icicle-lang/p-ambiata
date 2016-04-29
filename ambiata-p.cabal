@@ -34,6 +34,7 @@ library
                        P.Bool
                        P.Either
                        P.Maybe
+                       P.Maybe.Strict
                        P.Monad
                        P.Monoid
                        P.Ord
