@@ -39,6 +39,8 @@ module P.Monad (
 
   -- * Strict monadic functions
   , (<$!>)
+  , (>>=!!)
+  , (>>=!)
 
   -- * Extensions
   , bind
@@ -53,7 +55,8 @@ import           Control.Monad (foldM, foldM_, replicateM, replicateM_)
 import           Control.Monad (guard, when, unless)
 import           Control.Monad (liftM, liftM2, liftM3, liftM4, liftM5, ap)
 
-import           Prelude (seq)
+import           Control.DeepSeq (NFData, force)
+import           Prelude (seq, (.))
 
 #if (__GLASGOW_HASKELL__ >= 710)
 
@@ -72,6 +75,18 @@ f <$!> m = do
 {-# INLINE (<$!>) #-}
 
 #endif
+
+infixl 1 >>=!!
+
+-- | Deepseq version 'Control.Monad.>>='
+(>>=!!) :: (NFData a, Monad m) => m a -> (a -> m b) -> m b
+(>>=!!) m f = m >>= f . force
+{-# INLINE (>>=!!) #-}
+
+-- | Seq version 'Control.Monad.>>='
+(>>=!) :: (Monad m) => m a -> (a -> m b) -> m b
+(>>=!) m f = m >>= f . (\x -> x `seq` x)
+{-# INLINE (>>=!) #-}
 
 -- | Identifier version of 'Control.Monad.=<<'.
 bind :: Monad m => (a -> m b) -> m a -> m b
