@@ -18,5 +18,5 @@ Guidance - "Should it go in `p`"
  - If it is unsafe - NO.
  - Is there a more general version - NO.
  - Is it something available in base in only _some_ GHC versions - YES.
- - It has a lot of dependencies - Proabably Not - Maybe case for splitting into p-*.
+ - It has a lot of dependencies - Probably Not - Maybe case for splitting into p-*.
  - It introduces name clashes - Probably Not - Consider a standalone module designed to be import qualified in `P`, i.e. `P.Text as T`.
