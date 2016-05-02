@@ -24,6 +24,27 @@ instance Functor Maybe' where
   fmap _ Nothing' = Nothing'
   fmap f (Just' x) = Just' (f x)
 
+instance Applicative Maybe' where
+  pure = Just'
+
+  Just f <*> m = fmap f m
+  Nothing <*> _m = Nothing
+
+  Just _m1 *> m2 = m2
+  Nothing *> _m2 = Nothing
+
+-- | Not technically a monad due to bottom, but included anyway as we don't
+-- use partial functions.
+instance Monad Maybe' where
+  (Just x) >>= k = k x
+  Nothing >>= _ = Nothing
+
+  >> = (*>)
+
+  return = Just
+
+  fail _ = Nothing
+
 instance NFData a => NFData (Maybe' a) where
   rnf Nothing' = ()
   rnf (Just' x) = rnf x
@@ -39,3 +60,7 @@ isJust' (Just' _) = True
 isNothing' :: Maybe' a -> Bool
 isNothing' Nothing' = True
 isNothing' (Just' _) = False
+
+fromMaybe' :: a -> Maybe' a -> a
+fromMaybe' x Nothing' = x
+fromMaybe' _ (Just' y) = y
