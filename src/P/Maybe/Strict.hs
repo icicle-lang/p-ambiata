@@ -4,9 +4,12 @@ module P.Maybe.Strict (
   , fromMaybe'
   , isJust'
   , isNothing'
+  , maybe'
   ) where
 
+import           Control.Applicative (Applicative(..))
 import           Control.DeepSeq (NFData(..), rnf)
+import           Control.Monad (Monad(..))
 
 import           Data.Bool (Bool(..))
 import           Data.Eq (Eq(..))
@@ -27,23 +30,23 @@ instance Functor Maybe' where
 instance Applicative Maybe' where
   pure = Just'
 
-  Just f <*> m = fmap f m
-  Nothing <*> _m = Nothing
+  Just' f <*> m = fmap f m
+  Nothing' <*> _m = Nothing'
 
-  Just _m1 *> m2 = m2
-  Nothing *> _m2 = Nothing
+  Just' _m1 *> m2 = m2
+  Nothing' *> _m2 = Nothing'
 
 -- | Not technically a monad due to bottom, but included anyway as we don't
 -- use partial functions.
 instance Monad Maybe' where
-  (Just x) >>= k = k x
-  Nothing >>= _ = Nothing
+  (Just' x) >>= k = k x
+  Nothing' >>= _ = Nothing'
 
-  >> = (*>)
+  (>>) = (*>)
 
-  return = Just
+  return = Just'
 
-  fail _ = Nothing
+  fail _ = Nothing'
 
 instance NFData a => NFData (Maybe' a) where
   rnf Nothing' = ()
