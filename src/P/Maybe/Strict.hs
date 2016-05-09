@@ -2,6 +2,7 @@
 module P.Maybe.Strict (
     Maybe'(..)
   , fromMaybe'
+  , fromMaybeM'
   , isJust'
   , isNothing'
   , maybe'
@@ -15,7 +16,7 @@ import           Data.Bool (Bool(..))
 import           Data.Eq (Eq(..))
 import           Data.Functor (Functor(..))
 
-import           Prelude (Show(..))
+import           Prelude (Show(..), flip)
 
 -- | Strict version of 'Data.Maybe.Maybe'.
 data Maybe' a =
@@ -67,3 +68,6 @@ isNothing' (Just' _) = False
 fromMaybe' :: a -> Maybe' a -> a
 fromMaybe' x Nothing' = x
 fromMaybe' _ (Just' y) = y
+
+fromMaybeM' :: Applicative f => f a -> Maybe' a -> f a
+fromMaybeM' = flip maybe' pure
