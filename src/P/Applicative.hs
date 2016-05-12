@@ -1,7 +1,9 @@
 module P.Applicative (
     ApplicativeMonoid (..)
   , valueOrEmpty
+  , valueOrEmpty'
   , emptyOrValue
+  , emptyOrValue'
   , orEmpty
   , eitherA
   , (<<>>)
@@ -16,6 +18,12 @@ valueOrEmpty b a = if b then pure a else empty
 
 emptyOrValue :: Alternative f => Bool -> a -> f a
 emptyOrValue = valueOrEmpty . not
+
+valueOrEmpty' :: Alternative f => Bool -> f a -> f a
+valueOrEmpty' b f = if b then f else empty
+
+emptyOrValue' :: Alternative f => Bool -> f a -> f a
+emptyOrValue' = valueOrEmpty' . not
 
 orEmpty :: (Alternative f, Monoid a) => f a -> f a
 orEmpty f = f <|> pure mempty
