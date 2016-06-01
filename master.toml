@@ -4,7 +4,7 @@
   sha1 = "32339f9a84be83d05fa3941d27b6f133d3ffdda7"
 
 [build.dist]
-  GHC_VERSION="7.10.3"
+  GHC_VERSION="7.10.2"
   CABAL_VERSION = "1.22.4.0"
 
 [build.dist-7-8]
@@ -18,13 +18,13 @@
 [build.dist-7-10]
   HADDOCK = "true"
   HADDOCK_S3 = "$AMBIATA_HADDOCK_MASTER"
-  GHC_VERSION = "7.10.3"
+  GHC_VERSION = "7.10.2"
   CABAL_VERSION = "1.22.4.0"
 
 [build.branches-7-10]
   HADDOCK = "true"
   HADDOCK_S3 = "$AMBIATA_HADDOCK_BRANCHES"
-  GHC_VERSION = "7.10.3"
+  GHC_VERSION = "7.10.2"
   CABAL_VERSION = "1.22.4.0"
 
 [build.dist-8-0]
