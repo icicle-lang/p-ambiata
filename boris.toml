@@ -12,3 +12,6 @@
 [build.branches-7-10]
 
 [build.branches-8-0]
+
+[build.validate]
+  command = [["validate-respect"]]
