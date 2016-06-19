@@ -10,7 +10,7 @@ import           Test.QuickCheck.Function
 
 prop_nub :: (Ord a, Show a) => [a] -> Property
 prop_nub a =
-  (L.sort . ordNub) a === (L.sort . L.nub) a
+  ordNub a === L.nub a
 
 prop_lastMaybe :: (Eq a, Show a) => a -> [a] -> Property
 prop_lastMaybe a l =
