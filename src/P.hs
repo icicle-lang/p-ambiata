@@ -18,6 +18,7 @@ import           P.Bifunctor.Trans as X
 import           P.Bool as X
 import           P.Either as X
 import           P.Foldable as X
+import           P.Functor as X
 import           P.Maybe as X
 import           P.Maybe.Strict as X
 import           P.Monad as X
@@ -65,12 +66,6 @@ import           Data.List as X (
                    )
 import           Data.Maybe as X hiding (fromJust)
 import           Data.Either as X
-import           Data.Functor as X (
-                     Functor(..)
-                   , ($>)
-                   , (<$>)
-                   , void
-                   )
 import           Data.Int as X
 import           Data.Ord as X
 import           Data.Tuple as X
