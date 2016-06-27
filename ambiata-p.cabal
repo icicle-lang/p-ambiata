@@ -35,6 +35,7 @@ library
                        P.Bifunctor.Trans
                        P.Bool
                        P.Either
+                       P.Functor
                        P.Maybe
                        P.Maybe.Strict
                        P.Monad
