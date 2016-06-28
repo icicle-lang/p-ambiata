@@ -49,6 +49,11 @@ import           Control.DeepSeq as X (
                    )
 import           Data.Eq as X
 import           Data.Bifunctor as X (Bifunctor(..))
+import           Data.Bitraversable as X (
+                     Bitraversable (..)
+                   , bisequenceA
+                   , bifor
+                   )
 import           Data.Bool as X
 import           Data.Char as X (Char)
 import           Data.List as X (
