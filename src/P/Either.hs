@@ -3,6 +3,7 @@ module P.Either (
   , maybeToRight
   , leftToMaybe
   , rightToMaybe
+  , ecase
   ) where
 
 maybeToLeft :: r -> Maybe l -> Either l r
@@ -16,3 +17,6 @@ leftToMaybe = either Just (const Nothing)
 
 rightToMaybe :: Either l r -> Maybe r
 rightToMaybe = either (const Nothing) Just
+
+ecase :: Either l r -> (l -> b) -> (r -> b) -> b
+ecase e l = flip (either l) e
