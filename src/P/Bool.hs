@@ -1,7 +1,8 @@
 {-# LANGUAGE CPP #-}
+{-# LANGUAGE NoImplicitPrelude #-}
 module P.Bool (
-    andP
-  , orP
+    andA
+  , orA
   , whenM
   , unlessM
   , ifM
@@ -13,7 +14,11 @@ module P.Bool (
 #endif
   ) where
 
-import           Control.Monad (MonadPlus, when, unless, guard)
+import           Control.Applicative (Applicative, liftA2)
+import           Control.Monad (Monad(..), MonadPlus, (=<<), when, unless, guard)
+
+import           Data.Bool (Bool, (&&), (||))
+import           Data.Function (flip)
 
 #if __GLASGOW_HASKELL__ >= 708
 import qualified Data.Bool
@@ -38,11 +43,13 @@ guardM :: MonadPlus m => m Bool -> m ()
 guardM f = guard =<< f
 
 -- | Logical disjunction.
-orP :: (a -> Bool) -> (a -> Bool) -> a -> Bool
-p `orP` q = \x -> (p x) || (q x)
+orA :: Applicative f => f Bool -> f Bool -> f Bool
+orA =
+  liftA2 (||)
 
 -- | Logical conjunction.
-andP :: (a -> Bool) -> (a -> Bool) -> a -> Bool
-p `andP` q = \x -> (p x) && (q x)
+andA :: Applicative f => f Bool -> f Bool -> f Bool
+andA =
+  liftA2 (&&)
 
-infixl 8 `andP`, `orP`
+infixl 8 `andA`, `orA`
