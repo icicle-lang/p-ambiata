@@ -1,6 +1,8 @@
 {-# LANGUAGE CPP #-}
 module P.Bool (
-    whenM
+    andP
+  , orP
+  , whenM
   , unlessM
   , ifM
   , guardM
@@ -34,3 +36,13 @@ ifM p x y =
 
 guardM :: MonadPlus m => m Bool -> m ()
 guardM f = guard =<< f
+
+-- | Logical disjunction.
+orP :: (a -> Bool) -> (a -> Bool) -> a -> Bool
+p `orP` q = \x -> (p x) || (q x)
+
+-- | Logical conjunction.
+andP :: (a -> Bool) -> (a -> Bool) -> a -> Bool
+p `andP` q = \x -> (p x) && (q x)
+
+infixl 8 `andP`, `orP`
