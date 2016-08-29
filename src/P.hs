@@ -64,6 +64,7 @@ import           Data.List as X (
                    , null
 #endif
                    )
+import           Data.List.NonEmpty as X (nonEmpty)
 import           Data.Maybe as X hiding (fromJust)
 import           Data.Either as X
 import           Data.Int as X
