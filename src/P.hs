@@ -54,6 +54,11 @@ import           Data.Bitraversable as X (
                    , bisequenceA
                    , bifor
                    )
+import           Data.Bifoldable as X (
+                     Bifoldable (..)
+                   , bisequence_
+                   , bifor_
+                   )
 import           Data.Bool as X
 import           Data.Char as X (Char)
 import           Data.List as X (
