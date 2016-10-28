@@ -12,12 +12,7 @@ module P.Function (
   , (&)
   , fix
   , on
-
-  -- * Composition
   , (...)
-  , (....)
-  , (.....)
-  , (......)
 
   -- * Extensions
   , applyN
@@ -48,18 +43,7 @@ x & f =
 -- | Compose a unary function with a binary function.
 (...) :: (a -> b) -> (c -> d -> a) -> c -> d -> b
 (...) = (.) . (.)
-
--- | Compose a unary function with a ternary function.
-(....) :: (a -> b) -> (c -> d -> e -> a) -> c -> d -> e -> b
-(....) = (.) . (...)
-
--- | Compose a unary function with a quaternary function.
-(.....) :: (a -> b) -> (c -> d -> e -> f -> a) -> c -> d -> e -> f -> b
-(.....) = (.) . (....)
-
--- | Compose a unary function with a quintic function.
-(......) :: (a -> b) -> (c -> d -> e -> f -> g -> a) -> c -> d -> e -> f -> g -> b
-(......) = (.) . (.....)
+{-# INLINE (...) #-}
 
 applyN :: Int -> (a -> a) -> a -> a
 applyN n f =
