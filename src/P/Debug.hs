@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE NoImplicitPrelude #-}
 module P.Debug (
   -- * Functions for development/debuggung only
@@ -13,12 +14,24 @@ module P.Debug (
 import qualified Prelude as P
 import qualified Debug.Trace as T
 
+#if MIN_VERSION_base(4,9,0)
+import           GHC.Stack (HasCallStack)
+#endif
+
 {-# WARNING undefined "Do not use 'undefined' in production code" #-}
+#if MIN_VERSION_base(4,9,0)
+undefined :: HasCallStack => a
+#else
 undefined :: a
+#endif
 undefined = P.undefined
 
 {-# WARNING error "Do not use 'error' in production code" #-}
+#if MIN_VERSION_base(4,9,0)
+error :: HasCallStack => P.String -> a
+#else
 error :: P.String -> a
+#endif
 error = P.error
 
 {-# WARNING trace "Do not use 'trace' in production code" #-}
