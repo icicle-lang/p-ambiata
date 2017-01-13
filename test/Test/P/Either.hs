@@ -42,6 +42,10 @@ prop_maybe l r = rightToMaybe (maybeToRight l $ Just r) === Just r
 prop_nothing :: Int -> String -> Property
 prop_nothing l r = leftToMaybe (maybeToLeft r $ Just l) === Just l
 
+prop_flipEither :: Either Int String -> Property
+prop_flipEither e@(Left x) = flipEither e === Right x
+prop_flipEither e@(Right x) = flipEither e === Left x
+
 
 return []
 tests :: IO Bool
