@@ -3,6 +3,7 @@ module P.Functor (
     module X
   , with
   , (<$$>)
+  , fmap2
   ) where
 
 import           Data.Functor as X (Functor(..), ($>), (<$>), void)
@@ -16,3 +17,7 @@ with xs f =
 (<$$>) :: (Functor g, Functor f) => (a -> b) -> f (g a) -> f (g b)
 (<$$>) = fmap . fmap
 {-# INLINE (<$$>) #-}
+
+fmap2 :: (Functor g, Functor f) => (a -> b) -> f (g a) -> f (g b)
+fmap2 = fmap . fmap
+{-# INLINE fmap2 #-}
