@@ -8,9 +8,14 @@ import qualified Data.List as L
 import           Test.QuickCheck
 import           Test.QuickCheck.Function
 
-prop_nub :: (Ord a, Show a) => [a] -> Property
-prop_nub a =
+prop_ordNub :: (Ord a, Show a) => [a] -> Property
+prop_ordNub a =
   ordNub a === L.nub a
+
+prop_sortNub :: (Ord a, Show a) => [a] -> Property
+prop_sortNub a =
+  sortNub a === L.sort (L.nub a)
+
 
 prop_lastMaybe :: (Eq a, Show a) => a -> [a] -> Property
 prop_lastMaybe a l =
