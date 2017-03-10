@@ -5,15 +5,16 @@ module P.List (
   , ordNub
   , sortNub
   , lastMaybe
+  , safeIndex
   ) where
 
-import           Data.Bool (Bool)
+import           Data.Bool (Bool, otherwise)
 import           Data.Function ((.))
 import           Data.Int (Int)
-import           Data.List (reverse, length, filter)
+import           Data.List (reverse, length, filter, drop)
 import           Data.List.NonEmpty ()
-import           Data.Maybe (Maybe, listToMaybe)
-import           Data.Ord (Ord)
+import           Data.Maybe (Maybe (..), listToMaybe)
+import           Data.Ord (Ord, (<))
 import qualified Data.Set as Set
 
 -- | /O(n log n)/ Remove duplicate elements from a list.
@@ -61,3 +62,11 @@ lastMaybe = listToMaybe . reverse
 -- | count the number of elements satisfying a predicate in a list
 count :: (a -> Bool) -> [a] -> Int
 count predicate = length . filter predicate
+
+safeIndex :: [a] -> Int -> Maybe a
+safeIndex xs i
+  | i < 0 = Nothing
+  | otherwise =
+      case drop i xs of
+        [] -> Nothing
+        (x:_) -> Just x
