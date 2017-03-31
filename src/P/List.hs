@@ -3,17 +3,19 @@
 module P.List (
     count
   , ordNub
+  , ordNubBy
   , sortNub
   , lastMaybe
   ) where
 
 import           Data.Bool (Bool)
+import           Data.Eq (Eq(..))
 import           Data.Function ((.))
 import           Data.Int (Int)
 import           Data.List (reverse, length, filter)
 import           Data.List.NonEmpty ()
 import           Data.Maybe (Maybe, listToMaybe)
-import           Data.Ord (Ord)
+import           Data.Ord (Ord(..), Ordering(..))
 import qualified Data.Set as Set
 
 -- | /O(n log n)/ Remove duplicate elements from a list.
@@ -30,17 +32,31 @@ import qualified Data.Set as Set
 --
 ordNub :: Ord a => [a] -> [a]
 ordNub =
+  ordNubBy compare
+
+-- | /O(n log n)/ Behaves exactly like 'ordNub' except it uses a user-supplied
+--  comparison function.
+--
+--  > ordNubBy (comparing length) ["foo","bar","quux"] == ["foo","quux"]
+--  > ordNubBy (comparing fst) [("foo", 10),("foo", 20),("bar", 30)] == [("foo", 10),("bar", 30)]
+--
+ordNubBy :: (a -> a -> Ordering) -> [a] -> [a]
+ordNubBy f =
   let
     loop seen = \case
       [] ->
         []
       x : xs ->
-        if Set.member x seen then
-          loop seen xs
-        else
-          x : loop (Set.insert x seen) xs
-  in
-    loop Set.empty
+        let
+          y =
+            UserOrd f x
+        in
+          if Set.member y seen then
+            loop seen xs
+          else
+            x : loop (Set.insert y seen) xs
+   in
+     loop Set.empty
 
 -- | /O(n log n)/ Sort and remove duplicate elements from a list.
 --
@@ -61,3 +77,18 @@ lastMaybe = listToMaybe . reverse
 -- | count the number of elements satisfying a predicate in a list
 count :: (a -> Bool) -> [a] -> Int
 count predicate = length . filter predicate
+
+--
+-- Some machinery so we can use Data.Set with a custom comparator.
+--
+
+data UserOrd a =
+  UserOrd (a -> a -> Ordering) a
+
+instance Eq (UserOrd a) where
+  (==) (UserOrd f x) (UserOrd _ y) =
+    f x y == EQ
+
+instance Ord (UserOrd a) where
+  compare (UserOrd f x) (UserOrd _ y) =
+    f x y
