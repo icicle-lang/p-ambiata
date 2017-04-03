@@ -3,7 +3,9 @@ module Test.P.List where
 
 import           P.List
 
+import           Data.Function (on)
 import qualified Data.List as L
+import           Data.Ord (comparing)
 
 import           Test.QuickCheck
 import           Test.QuickCheck.Function
@@ -12,10 +14,13 @@ prop_ordNub :: (Ord a, Show a) => [a] -> Property
 prop_ordNub a =
   ordNub a === L.nub a
 
+prop_ordNubBy :: (Ord a, Show a) => [[a]] -> Property
+prop_ordNubBy a =
+  ordNubBy (comparing length) a === L.nubBy ((==) `on` length) a
+
 prop_sortNub :: (Ord a, Show a) => [a] -> Property
 prop_sortNub a =
   sortNub a === L.sort (L.nub a)
-
 
 prop_lastMaybe :: (Eq a, Show a) => a -> [a] -> Property
 prop_lastMaybe a l =
