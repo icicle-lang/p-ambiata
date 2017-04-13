@@ -41,6 +41,8 @@ module P.Monad (
   , (<$!>)
   , (>>=!!)
   , (>>=!)
+  , (=<<!!)
+  , (=<<!)
 
   -- * Extensions
   , bind
@@ -77,16 +79,34 @@ f <$!> m = do
 #endif
 
 infixl 1 >>=!!
+infixl 1 >>=!
+
+infixr 1 =<<!!
+infixr 1 =<<!
 
 -- | Deepseq version 'Control.Monad.>>='
 (>>=!!) :: (NFData a, Monad m) => m a -> (a -> m b) -> m b
-(>>=!!) m f = m >>= f . force
+(>>=!!) m f =
+  m >>= f . force
 {-# INLINE (>>=!!) #-}
 
 -- | Seq version 'Control.Monad.>>='
 (>>=!) :: (Monad m) => m a -> (a -> m b) -> m b
-(>>=!) m f = m >>= f . (\x -> x `seq` x)
+(>>=!) m f =
+  m >>= f . (\x -> x `seq` x)
 {-# INLINE (>>=!) #-}
+
+-- | Deepseq version 'Control.Monad.>>='
+(=<<!!) :: (NFData a, Monad m) => (a -> m b) -> m a -> m b
+(=<<!!) f m =
+  f . force =<< m
+{-# INLINE (=<<!!) #-}
+
+-- | Seq version 'Control.Monad.>>='
+(=<<!) :: (Monad m) => (a -> m b) -> m a -> m b
+(=<<!) f m =
+  f . (\x -> x `seq` x) =<< m
+{-# INLINE (=<<!) #-}
 
 -- | Identifier version of 'Control.Monad.=<<'.
 bind :: Monad m => (a -> m b) -> m a -> m b
