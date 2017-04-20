@@ -53,6 +53,8 @@ import           Data.Bitraversable as X (
                      Bitraversable (..)
                    , bisequenceA
                    , bifor
+                   , bisequence
+                   , bimapM
                    )
 import           Data.Bifoldable as X (
                      Bifoldable (..)
