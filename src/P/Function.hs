@@ -12,6 +12,7 @@ module P.Function (
   , (&)
   , fix
   , on
+  , (...)
 
   -- * Extensions
   , applyN
@@ -38,6 +39,11 @@ x & f =
   f x
 
 #endif
+
+-- | Compose a unary function with a binary function.
+(...) :: (a -> b) -> (c -> d -> a) -> c -> d -> b
+(...) = (.) . (.)
+{-# INLINE (...) #-}
 
 applyN :: Int -> (a -> a) -> a -> a
 applyN n f =
