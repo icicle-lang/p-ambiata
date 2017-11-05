@@ -63,6 +63,8 @@ prop_lefts_list xs = lefts xs === E.lefts xs
 prop_rights_list :: [Either () Int] -> Property
 prop_rights_list xs = rights xs === E.rights xs
 
+prop_partitionEithers_list :: [Either () Int] -> Property
+prop_partitionEithers_list xs = partitionEithers xs === E.partitionEithers xs
 
 return []
 tests :: IO Bool

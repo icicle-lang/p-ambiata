@@ -8,6 +8,7 @@ module P.Either (
   , rights
   , ecase
   , flipEither
+  , partitionEithers
   ) where
 
 import           Data.Either (Either(..), either)
@@ -42,3 +43,7 @@ lefts =
 rights :: (Foldable f) => f (Either a b) -> [b]
 rights =
   Either.rights . toList
+
+partitionEithers :: (Foldable f) => f (Either a b) -> ([a], [b])
+partitionEithers =
+  Either.partitionEithers . toList

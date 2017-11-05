@@ -78,6 +78,7 @@ import           Data.List.NonEmpty as X (nonEmpty)
 import           Data.Maybe as X hiding (fromJust)
 import           Data.Either as X hiding (
                      lefts
+                   , partitionEithers
                    , rights
                    )
 import           Data.Int as X
