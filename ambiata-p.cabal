@@ -57,4 +57,5 @@ test-suite test
                      , QuickCheck                    >= 2.8.2      && < 2.9
                      , quickcheck-properties
                      , ambiata-p
+                     , semigroups
                      , transformers

@@ -76,7 +76,10 @@ import           Data.List as X (
                    )
 import           Data.List.NonEmpty as X (nonEmpty)
 import           Data.Maybe as X hiding (fromJust)
-import           Data.Either as X
+import           Data.Either as X hiding (
+                     lefts
+                   , rights
+                   )
 import           Data.Int as X
 import           Data.Ord as X
 import           Data.Tuple as X

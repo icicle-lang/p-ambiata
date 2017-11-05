@@ -1,11 +1,21 @@
+{-# LANGUAGE NoImplicitPrelude #-}
 module P.Either (
     maybeToLeft
   , maybeToRight
   , leftToMaybe
+  , lefts
   , rightToMaybe
+  , rights
   , ecase
   , flipEither
   ) where
+
+import           Data.Either (Either(..), either)
+import qualified Data.Either as Either
+import           Data.Foldable (Foldable, toList)
+import           Data.Function ((.), flip, const)
+import           Data.Maybe (Maybe(..), maybe)
+
 
 maybeToLeft :: r -> Maybe l -> Either l r
 maybeToLeft r = maybe (Right r) Left
@@ -24,3 +34,11 @@ ecase e l = flip (either l) e
 
 flipEither :: Either a b -> Either b a
 flipEither = either Right Left
+
+lefts :: (Foldable f) => f (Either a b) -> [a]
+lefts =
+  Either.lefts . toList
+
+rights :: (Foldable f) => f (Either a b) -> [b]
+rights =
+  Either.rights . toList

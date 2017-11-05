@@ -1,6 +1,17 @@
+{-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE TemplateHaskell #-}
 module Test.P.Either where
 
+import           Control.Monad (return)
+import           Data.Either (Either(..))
+import qualified Data.Either as E
+import           Data.Function (($))
+import           Data.Maybe (Maybe(..))
+
+import           Prelude (String)
+import           System.IO (IO)
+
+import           P (Bool, Int)
 import           P.Either
 
 import           Test.QuickCheck
@@ -45,6 +56,12 @@ prop_nothing l r = leftToMaybe (maybeToLeft r $ Just l) === Just l
 prop_flipEither :: Either Int String -> Property
 prop_flipEither e@(Left x) = flipEither e === Right x
 prop_flipEither e@(Right x) = flipEither e === Left x
+
+prop_lefts_list :: [Either Int ()] -> Property
+prop_lefts_list xs = lefts xs === E.lefts xs
+
+prop_rights_list :: [Either () Int] -> Property
+prop_rights_list xs = rights xs === E.rights xs
 
 
 return []
