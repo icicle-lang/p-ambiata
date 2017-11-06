@@ -39,11 +39,14 @@ flipEither = either Right Left
 lefts :: (Foldable f) => f (Either a b) -> [a]
 lefts =
   Either.lefts . toList
+{-# SPECIALIZE lefts :: [Either a b] -> [a] #-}
 
 rights :: (Foldable f) => f (Either a b) -> [b]
 rights =
   Either.rights . toList
+{-# SPECIALIZE rights :: [Either a b] -> [b] #-}
 
 partitionEithers :: (Foldable f) => f (Either a b) -> ([a], [b])
 partitionEithers =
   Either.partitionEithers . toList
+{-# SPECIALIZE partitionEithers :: [Either a b] -> ([a], [b]) #-}
