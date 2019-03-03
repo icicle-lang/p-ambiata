@@ -6,7 +6,7 @@ maintainer:            Ambiata <info@ambiata.com>
 copyright:             (c) 2015 Ambiata.
 synopsis:              A commmon prelude for Ambiata project.
 category:              Prelude
-cabal-version:         >= 1.8
+cabal-version:         >= 1.22
 build-type:            Simple
 description:           A set of standard preludes for Ambiata projects. \
                        Emphasis firstly on safety, and secondly on      \
@@ -21,6 +21,8 @@ library
                         , semigroups                  >= 0.16       && < 0.19
                         , text                        >= 1.1        && < 1.3
                         , transformers                >= 0.4        && < 0.6
+
+  default-language:       Haskell2010
 
   ghc-options:          -Wall
   if impl(ghc >= 8.0)
@@ -48,10 +50,10 @@ library
                        P.Show
 
 test-suite test
-  type:           exitcode-stdio-1.0
-  main-is:        test.hs
-  ghc-options:    -Wall -threaded -O2
-  hs-source-dirs: test
+  type:                exitcode-stdio-1.0
+  main-is:             test.hs
+  ghc-options:         -Wall -threaded -O2
+  hs-source-dirs:      test
   build-depends:       base
                      , mtl                           == 2.2.*
                      , QuickCheck                    >= 2.8.2      && < 2.9
@@ -59,3 +61,16 @@ test-suite test
                      , ambiata-p
                      , semigroups
                      , transformers
+  default-language:    Haskell2010
+  other-modules:       
+                       Test.P.Applicative
+                       Test.P.Bifunctor.Trans
+                       Test.P.Bifunctor.Trans.Laws
+                       Test.P.Bool
+                       Test.P.Either
+                       Test.P.Foldable
+                       Test.P.Function
+                       Test.P.List
+                       Test.P.Maybe
+                       Test.P.Monoid
+                       Test.P.Ord
