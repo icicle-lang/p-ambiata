@@ -2,6 +2,7 @@ module P.Show (
     renderBool
   , renderFractional
   , renderIntegral
+  , tshow
   ) where
 
 import          Data.Text (Text, pack)
@@ -14,3 +15,6 @@ renderFractional = pack . show
 
 renderBool :: Bool -> Text
 renderBool = pack . show
+
+tshow :: Show a => a -> Text
+tshow = pack . show
