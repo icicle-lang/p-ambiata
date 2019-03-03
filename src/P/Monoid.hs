@@ -7,7 +7,8 @@
 module P.Monoid (
   -- * 'Monoid' typeclass
     Monoid(..)
-  , Semigroup(..)
+  , (M.<>)
+  , Semigroup(sconcat, stimes)
 
   -- * Extensions
   , valueOrZero
@@ -18,7 +19,7 @@ module P.Monoid (
 import           Control.Applicative (Applicative(..))
 
 import           Data.Semigroup (Semigroup(..))
-import           Data.Monoid (Monoid(..))
+import           Data.Monoid as M (Monoid(..), (<>))
 
 import           Data.Bool (Bool, not)
 import           Data.Function ((.))
